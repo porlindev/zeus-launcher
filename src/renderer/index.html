@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' https://cdn.modrinth.com data:;"
+    />
+    <title>Zeus Launcher</title>
+    <link rel="stylesheet" href="styles/fonts.css" />
+    <link rel="stylesheet" href="styles/main.css" />
+  </head>
+  <body>
+    <canvas id="fx-lightning"></canvas>
+    <div id="fx-flash"></div>
+
+    <div id="app">
+      <header class="titlebar" id="titlebar">
+        <div class="brand">
+          <span class="brand-icon">&#9889;</span>
+          <span class="brand-name">ZEUS LAUNCHER</span>
+        </div>
+        <nav class="tabs">
+          <button class="tab-btn active" data-view="home" data-i18n="nav.home">홈</button>
+          <button class="tab-btn" data-view="instances" data-i18n="nav.instances">인스턴스</button>
+          <button class="tab-btn" data-view="modrinth">Modrinth</button>
+          <button class="tab-btn" data-view="changelog" data-i18n="nav.changelog">업데이트 내역</button>
+          <button class="tab-btn" data-view="settings" data-i18n="nav.settings">설정</button>
+        </nav>
+        <div class="window-controls">
+          <button id="win-minimize" class="win-btn" data-i18n-title="titlebar.minimize" title="최소화">&#8211;</button>
+          <button id="win-close" class="win-btn win-btn-close" data-i18n-title="titlebar.close" title="닫기">&#10005;</button>
+        </div>
+      </header>
+
+      <!-- HOME VIEW -->
+      <section class="view" id="view-home">
+        <main class="hero">
+          <div class="hero-watermark">&#9889; ZEUS</div>
+          <pre id="launch-log" class="launch-log"></pre>
+        </main>
+
+        <div class="pixel-divider"></div>
+
+        <footer class="bottom-bar">
+          <div class="widget account-widget">
+            <button id="account-btn" class="pill-btn">
+              <span class="pill-avatar">&#9889;</span>
+              <span class="pill-text">
+                <span id="account-name" class="pill-title" data-i18n="home.accountNone">계정 없음</span>
+                <span class="pill-sub" data-i18n="home.clickToSwitch">클릭하여 전환</span>
+              </span>
+            </button>
+
+            <div id="account-popover" class="popover glass-panel hidden">
+              <h2 data-i18n="home.accountPopoverTitle">계정</h2>
+              <div id="account-list" class="row-list"></div>
+
+              <h2 data-i18n="home.addAccountTitle">계정 추가</h2>
+              <div class="account-actions">
+                <button id="ms-login-btn" class="btn btn-primary" data-i18n="home.addMicrosoft">Microsoft 계정 추가</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="widget install-widget">
+            <button id="instance-btn" class="pill-btn">
+              <span class="pill-text">
+                <span id="instance-name" class="pill-title" data-i18n="home.instanceNone">인스턴스 없음</span>
+                <span class="pill-sub" data-i18n="home.clickToSwitch">클릭하여 전환</span>
+              </span>
+              <span class="chevron">&#9662;</span>
+            </button>
+
+            <div id="instance-popover" class="popover glass-panel hidden">
+              <h2 data-i18n="home.instancePopoverTitle">인스턴스 선택</h2>
+              <div id="instance-quick-list" class="row-list"></div>
+            </div>
+          </div>
+
+          <button id="launch-btn" class="play-btn" data-i18n="home.launch">실행</button>
+        </footer>
+      </section>
+
+      <!-- INSTANCES VIEW -->
+      <section class="view hidden" id="view-instances">
+        <div class="instances-header">
+          <h2 data-i18n="instances.title">인스턴스 관리</h2>
+          <button id="new-instance-btn" class="btn btn-primary" data-i18n="instances.new">+ 새 인스턴스</button>
+        </div>
+
+        <div id="instances-grid" class="instances-grid"></div>
+
+        <div id="new-instance-form" class="glass-panel new-instance-form hidden">
+          <h2 data-i18n="instances.formTitle">새 인스턴스</h2>
+          <input
+            id="new-instance-name"
+            type="text"
+            data-i18n-placeholder="instances.namePlaceholder"
+            placeholder="인스턴스 이름"
+          />
+          <div class="select-row">
+            <div id="new-instance-version"></div>
+            <div id="new-instance-modloader"></div>
+            <div id="new-instance-loader-version"></div>
+          </div>
+          <div class="form-actions">
+            <button id="create-instance-btn" class="btn btn-primary" data-i18n="instances.create">생성</button>
+            <button id="cancel-instance-btn" class="btn" data-i18n="instances.cancel">취소</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- CHANGELOG VIEW -->
+      <section class="view hidden" id="view-changelog">
+        <div class="instances-header">
+          <h2 data-i18n="changelog.title">업데이트 내역</h2>
+        </div>
+
+        <div id="changelog-list" class="changelog-list"></div>
+      </section>
+
+      <!-- MODRINTH VIEW -->
+      <section class="view hidden" id="view-modrinth">
+        <div class="instances-header">
+          <h2 data-i18n="modrinth.title">Modrinth</h2>
+        </div>
+
+        <div class="modrinth-toolbar">
+          <input
+            id="modrinth-search-input"
+            type="text"
+            data-i18n-placeholder="modrinth.searchPlaceholder"
+            placeholder="모드 검색..."
+          />
+          <button id="modrinth-search-btn" class="btn btn-primary" data-i18n="modrinth.search">검색</button>
+        </div>
+
+        <div id="modrinth-instance-hint" class="modrinth-hint hidden"></div>
+
+        <div id="modrinth-results" class="modrinth-grid"></div>
+      </section>
+
+      <!-- SETTINGS VIEW -->
+      <section class="view hidden" id="view-settings">
+        <div class="instances-header">
+          <h2 data-i18n="settings.title">설정</h2>
+        </div>
+
+        <div class="settings-grid">
+          <div class="glass-panel settings-card">
+            <h2 data-i18n="settings.language">언어</h2>
+            <select id="settings-language"></select>
+          </div>
+
+          <div class="glass-panel settings-card">
+            <h2 data-i18n="settings.font">폰트</h2>
+            <select id="settings-font"></select>
+          </div>
+
+          <div class="glass-panel settings-card">
+            <h2 data-i18n="settings.launchBehavior">실행 동작</h2>
+            <label class="switch-row">
+              <span data-i18n="settings.closeOnLaunch">클라이언트 실행 후 런처 숨기기</span>
+              <span class="switch">
+                <input type="checkbox" id="settings-close-on-launch" />
+                <span class="switch-track"></span>
+              </span>
+            </label>
+            <p class="settings-hint" data-i18n="settings.closeOnLaunchHint">
+              게임이 시작되면 런처 창을 자동으로 숨기고, 게임이 종료되면 다시 표시합니다.
+            </p>
+          </div>
+
+          <div class="glass-panel settings-card">
+            <h2 data-i18n="settings.memory">메모리 (RAM)</h2>
+            <div class="memory-row">
+              <label>
+                <span data-i18n="settings.memoryMin">최소</span>
+                <input id="settings-memory-min" type="number" min="512" step="256" />
+              </label>
+              <label>
+                <span data-i18n="settings.memoryMax">최대</span>
+                <input id="settings-memory-max" type="number" min="512" step="256" />
+              </label>
+              <span class="memory-unit">MB</span>
+            </div>
+          </div>
+
+          <div class="glass-panel settings-card">
+            <h2 data-i18n="settings.windowSize">게임 창 크기</h2>
+            <div class="memory-row">
+              <label>
+                <span data-i18n="settings.windowWidth">너비</span>
+                <input id="settings-window-width" type="number" min="100" step="10" />
+              </label>
+              <label>
+                <span data-i18n="settings.windowHeight">높이</span>
+                <input id="settings-window-height" type="number" min="100" step="10" />
+              </label>
+              <span class="memory-unit">px</span>
+            </div>
+          </div>
+
+          <div class="glass-panel settings-card">
+            <h2 data-i18n="settings.folder">런처 폴더</h2>
+            <button id="settings-open-folder-btn" class="btn" data-i18n="settings.openFolder">폴더 열기</button>
+          </div>
+
+          <div class="glass-panel settings-card">
+            <h2 data-i18n="settings.update">업데이트</h2>
+            <button id="settings-check-update-btn" class="btn" data-i18n="settings.checkForUpdates">지금 확인</button>
+            <p id="settings-update-status" class="settings-hint"></p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div id="toast-container" class="toast-container"></div>
+
+    <script src="i18n/locales.js"></script>
+    <script src="i18n/index.js"></script>
+    <script src="toast.js"></script>
+    <script src="changelog.js"></script>
+    <script src="components/customScrollbar.js"></script>
+    <script src="components/customSelect.js"></script>
+    <script src="effects/lightning.js"></script>
+    <script src="window-controls.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>

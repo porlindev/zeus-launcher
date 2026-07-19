@@ -1,0 +1,60 @@
+{
+  "name": "zeus-launcher",
+  "version": "0.0.1",
+  "description": "Minecraft launcher built with Electron and Node.js",
+  "main": "src/main/index.js",
+  "author": "",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev",
+    "build": "electron-builder",
+    "build:win": "electron-builder --win",
+    "build:mac": "electron-builder --mac",
+    "build:linux": "electron-builder --linux"
+  },
+  "dependencies": {
+    "@xhayper/discord-rpc": "^1.3.4",
+    "electron-store": "^8.2.0",
+    "electron-updater": "^6.3.9",
+    "extract-zip": "^2.0.1",
+    "minecraft-launcher-core": "^3.18.1",
+    "msmc": "^5.0.5"
+  },
+  "devDependencies": {
+    "electron": "^32.2.0",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "dev.zeus.launcher",
+    "productName": "Zeus Launcher",
+    "files": [
+      "src/**/*",
+      "assets/**/*"
+    ],
+    "directories": {
+      "buildResources": "build",
+      "output": "dist"
+    },
+    "publish": {
+      "provider": "github",
+      "owner": "porlindev",
+      "repo": "zeus-launcher"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "assets/icons/icon.ico"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "assets/icons/icon.icns"
+    },
+    "linux": {
+      "target": "AppImage",
+      "icon": "assets/icons/icon.png"
+    }
+  },
+  "allowScripts": {
+    "electron@32.3.3": true
+  }
+}
