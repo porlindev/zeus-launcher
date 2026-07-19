@@ -32,6 +32,20 @@ Zeus Launcher는 Vanilla / Forge / Fabric 인스턴스를 관리하고, Modrinth
 - ⚙️ **세부 설정** — 언어, 폰트, 게임 실행 후 런처 자동 숨김, 메모리(RAM), 게임 창 크기, 런처 폴더 바로 열기
 - 📜 **업데이트 내역 페이지** — 앱 내에서 변경 이력을 언어별로 확인
 
+## 📸 스크린샷
+
+| 홈 | 인스턴스 |
+| --- | --- |
+| ![홈 화면](assets/screenshots/01-home.png) | ![인스턴스 관리](assets/screenshots/02-instances.png) |
+
+| Modrinth | 업데이트 내역 |
+| --- | --- |
+| ![Modrinth](assets/screenshots/03-modrinth.png) | ![업데이트 내역](assets/screenshots/04-changelog.png) |
+
+| 설정 |
+| --- |
+| ![설정](assets/screenshots/05-settings.png) |
+
 ## 🛠️ 기술 스택
 
 | 분류 | 사용 기술 |

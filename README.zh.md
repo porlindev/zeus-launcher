@@ -32,6 +32,20 @@ Zeus Launcher 是一款桌面版 Minecraft 启动器，可管理 Vanilla / Forge
 - ⚙️ **细致的设置项** — 语言、字体、游戏启动后自动隐藏启动器、内存 (RAM)、游戏窗口大小、快速打开启动器文件夹
 - 📜 **应用内更新日志** — 可按所选语言查看更新历史
 
+## 📸 截图
+
+| 首页 | 实例 |
+| --- | --- |
+| ![首页](assets/screenshots/01-home.png) | ![实例管理](assets/screenshots/02-instances.png) |
+
+| Modrinth | 更新日志 |
+| --- | --- |
+| ![Modrinth](assets/screenshots/03-modrinth.png) | ![更新日志](assets/screenshots/04-changelog.png) |
+
+| 设置 |
+| --- |
+| ![设置](assets/screenshots/05-settings.png) |
+
 ## 🛠️ 技术栈
 
 | 分类 | 技术 |

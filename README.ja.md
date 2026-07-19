@@ -32,6 +32,20 @@ Zeus Launcher は、Vanilla / Forge / Fabric インスタンスを管理し、Mo
 - ⚙️ **詳細設定** — 言語、フォント、ゲーム起動後のランチャー自動非表示、メモリ (RAM)、ゲームウィンドウサイズ、ランチャーフォルダのクイックオープン
 - 📜 **アプリ内アップデート履歴** — 選択した言語で更新履歴を確認可能
 
+## 📸 スクリーンショット
+
+| ホーム | インスタンス |
+| --- | --- |
+| ![ホーム画面](assets/screenshots/01-home.png) | ![インスタンス管理](assets/screenshots/02-instances.png) |
+
+| Modrinth | アップデート履歴 |
+| --- | --- |
+| ![Modrinth](assets/screenshots/03-modrinth.png) | ![アップデート履歴](assets/screenshots/04-changelog.png) |
+
+| 設定 |
+| --- |
+| ![設定](assets/screenshots/05-settings.png) |
+
 ## 🛠️ 技術スタック
 
 | 分類 | 技術 |

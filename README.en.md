@@ -32,6 +32,20 @@ Zeus Launcher is a desktop Minecraft launcher for managing Vanilla / Forge / Fab
 - ⚙️ **Fine-grained settings** — language, font, auto-hide launcher after the game starts, memory (RAM), game window size, quick-open launcher folder
 - 📜 **In-app changelog** — browse update history, localized to your selected language
 
+## 📸 Screenshots
+
+| Home | Instances |
+| --- | --- |
+| ![Home screen](assets/screenshots/01-home.png) | ![Instance management](assets/screenshots/02-instances.png) |
+
+| Modrinth | Changelog |
+| --- | --- |
+| ![Modrinth](assets/screenshots/03-modrinth.png) | ![Changelog](assets/screenshots/04-changelog.png) |
+
+| Settings |
+| --- |
+| ![Settings](assets/screenshots/05-settings.png) |
+
 ## 🛠️ Tech Stack
 
 | Category | Technology |
