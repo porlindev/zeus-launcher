@@ -8,7 +8,7 @@
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](LICENSE)
 [![Electron](https://img.shields.io/badge/Electron-32-9feaf9.svg)](https://www.electronjs.org/)
-![Version](https://img.shields.io/badge/version-0.1.0-blueviolet)
+![Version](https://img.shields.io/badge/version-0.0.1-blueviolet)
 
 [한국어](README.md) · [English](README.en.md) · [日本語](README.ja.md) · [中文](README.zh.md)
 
