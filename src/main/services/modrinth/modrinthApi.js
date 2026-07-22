@@ -1,5 +1,5 @@
 const API_BASE = 'https://api.modrinth.com/v2';
-const USER_AGENT = 'zeus-launcher/0.1.0 (github.com/zeus-launcher)';
+const USER_AGENT = 'zeus-launcher/0.0.1 (github.com/zeus-launcher)';
 
 async function searchMods({ query = '', loader, gameVersion, limit = 20, offset = 0 } = {}) {
   const facets = [['project_type:mod']];
